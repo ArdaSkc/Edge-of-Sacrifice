@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge of Sacrifice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #ffffff;
+            background-color: #000000;
+            overflow-x: hidden;
+        }
+
+        /* Parallax container */
+        .parallax-container {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar .menu a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            font-weight: 400;
+        }
+
+        .navbar .menu a:hover {
+            color: #00bcd4;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            padding: 0 20px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 4rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .header a {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 2px solid #ffffff;
+            text-decoration: none;
+            color: #ffffff;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .header a:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .contenttrailer {
+            padding: 320px 600px;
+            background: transparent;
+        }
+
+        .content {
+            padding: 320px 600px;
+            background: #fff;
+        }
+
+        .content h2 {
+            color: #000;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .content p {
+            color: #000;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            text-align: justify;
+            font-weight: 400;
+        }
+
+        .about {
+            text-align: center;
+            padding: 320px 20px;
+            background: #000000;
+            display: flex;
+            justify-content: center;
+            gap: 300px;
+        }
+
+        .about .profile {
+            text-align: center;
+        }
+
+        .about .profile img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about .profile img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .about h3 {
+            margin-top: 15px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .about p {
+            font-size: 1rem;
+            font-weight: 400;
+            margin-top: 10px;
+        }
+
+        footer {
+            background-color: #101010;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        footer .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        footer .social-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        footer .social-links a:hover {
+            color: #00bcd4;
+        }
+
+        footer .email {
+            font-size: 1rem;
+        }
+
+        footer .email a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        footer .email a:hover {
+            text-decoration: underline;
+        }
+
+        footer .copyright {
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        footer .logo-footer {
+        }
+
+        footer .logo-footer img {
+            height: 100px;
+        }
+
+        /* Trailer Section */
+        .trailer-section {
+            height: 900px;
+            background: url('./Image/trailer-background.png') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .trailer-section .content {
+            z-index: 2;
+        }
+
+        .trailer-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .trailer-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .trailer-section .play-button {
+            display: inline-block;
+            padding: 15px 30px;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .trailer-section .play-button:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .trailer-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Parallax Section -->
+    <div class="parallax-container">
+        <video class="video-bg" autoplay muted loop>
+            <source src="./video/mainvideo.mp4" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+        <nav class="navbar">
+            <div class="menu">
+                <a href="#synopsis">Synopsis</a>
+                <a href="#about">About</a>
+                <a href="#trailer">Trailer</a>
+            </div>
+        </nav>
+        <header class="header">
+            <div>
+                <h1>Edge of Sacrifice</h1>
+                <p>An epic cinematic experience of sacrifice and survival.</p>
+                <a href="#synopsis">Learn More</a>
+            </div>
+        </header>
+    </div>
+
+    <!-- Section Synopsis -->
+    <section id="synopsis" class="content">
+        <h2>Edge of Sacrifice</h2>
+        <p>
+            In a dystopian future, Violette, a young princess, escapes the destruction of her kingdom with a talisman of immense power, the key to activating a world of dormant robots. Fleeing by sea, she washes ashore on a desolate beach, pursued by enemy soldiers. Surrounded, Violette must choose between her own survival or sacrificing her life to unleash the army and save her world.
+        </p>
+    </section>
+
+    <!-- Section About -->
+    <section id="about" class="about">
+        <div class="profile">
+            <img src="./Image/image-photo-visage_01.png" alt="Person 1">
+            <h3>ARDA SEKERCI</h3>
+            <p>Role/Work Type</p>
+        </div>
+        <div class="profile">
+            <img src="./Image/image-photo-visage_02.png" alt="Person 2">
+            <h3>SAMUEL NAKHIMOVITCH</h3>
+            <p>Role/Work Type</p>
+        </div>
+    </section>
+
+    <!-- Trailer Section -->
+    <section id="trailer" class="trailer-section" onclick="location.href='https://www.youtube.com/watch?v=your-trailer-id';">
+        <div class="contenttrailer">
+            <h2>Watch the Official Trailer</h2>
+            <p>Immerse yourself in the world of Edge of Sacrifice.</p>
+            <a href="https://www.youtube.com/watch?v=your-trailer-id" target="_blank" class="play-button">Play Trailer</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://facebook.com" target="_blank">Facebook</a>
+            <a href="https://twitter.com" target="_blank">Twitter</a>
+            <a href="https://instagram.com" target="_blank">Instagram</a>
+        </div>
+        <div class="email">
+            <a href="mailto:samuel.nakhimovitch@etu.iad-arts.be">samuel.nakhimovitch@etu.iad-arts.be</a>
+        </div>
+        <div class="email">
+            <a href="mailto:arda.sekerci@etu.iad-arts.be">arda.sekerci@etu.iad-arts.be</a>
+        </div>
+        <div class="copyright">
+            © 2024 Edge of Sacrifice. All rights reserved.
+        </div>
+        <div class="logo-footer">
+            <img src="./Image/image-logo.png" alt="Logo">
+        </div>
+    </footer>
+</body>
+</html>
